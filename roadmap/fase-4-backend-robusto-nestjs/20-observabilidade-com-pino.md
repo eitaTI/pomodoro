@@ -25,9 +25,9 @@ async function bootstrap() {
   // Adiciona o CORS para o seu Frontend Next.js conseguir chamar essa API depois!
   app.enableCors(); 
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT ?? 3000);
 }
-bootstrap();
+void bootstrap();
 ```
 
 Você também precisa adicionar a configuração do Pino lá no `app.module.ts`:

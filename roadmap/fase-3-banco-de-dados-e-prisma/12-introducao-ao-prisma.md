@@ -15,3 +15,8 @@ No seu terminal, dentro da pasta `backend`:
 `npx prisma init`
 
 Você vai ver que ele criou uma pasta `prisma/` com um arquivo `schema.prisma`. É aqui que a mágica de desenhar o banco de dados vai acontecer! Ele também criou um arquivo `.env` para você colocar a URL do seu banco (que o nosso docker-compose já subiu pra você).
+
+Abra o `.env` e cole a URL de conexão abaixo, substituindo o conteúdo existente:
+```
+DATABASE_URL="postgresql://pomodoro_user:pomodoro_password@localhost:5432/pomodoro_db?schema=public"
+```
