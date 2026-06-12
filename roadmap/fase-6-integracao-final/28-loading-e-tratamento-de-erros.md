@@ -7,15 +7,18 @@ A tela não pode ficar em branco. Nós precisamos dar um feedback pro usuário (
 1. Crie um novo estado no topo do seu `page.tsx`:
 `const [carregando, setCarregando] = useState(true);`
 
-2. Lá no seu `fetch` de buscar histórico:
+ 2. Lá no seu `fetch` de buscar histórico:
 ```tsx
     fetch("http://localhost:3000/pomodoro/historico")
       .then(resposta => resposta.json())
       .then(dados => {
           setHistorico(dados);
-          setCarregando(false); // Tiramos o aviso de carregando!
+          setCarregando(false);
       })
-//...
+      .catch(erro => {
+          console.error("Erro ao buscar histórico:", erro);
+          setCarregando(false); // Mesmo com erro, para de mostrar o loading
+      })
 ```
 
 3. Na hora de renderizar o HTML (no `return`):

@@ -8,12 +8,17 @@ Vamos deixar a nossa tela com cara de Pomodoro. Modifique o `page.tsx`:
 
 ```tsx
 "use client";
-// ... (mantenha os imports e variáveis useState/useEffect que fizemos antes)
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [tempo, setTempo] = useState(25 * 60); // 25 Minutos
-  
-  // (mantenha a lógica do useEffect aqui, mas trocando pra minutos!)
+  const [tempo, setTempo] = useState(25 * 60); // 25 Minutos em segundos
+
+  useEffect(() => {
+    if (tempo > 0) {
+      const timerId = setTimeout(() => setTempo(tempo - 1), 1000);
+      return () => clearTimeout(timerId);
+    }
+  }, [tempo]);
 
   const minutos = String(Math.floor(tempo / 60)).padStart(2, '0');
   const segundos = String(tempo % 60).padStart(2, '0');

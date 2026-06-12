@@ -24,3 +24,5 @@ export default function Home() {
 }
 ```
 Salve o arquivo e olhe pro navegador. Viu que atualizou sozinho na mesma hora? Viu como você colocou código JavaScript `{2 + 2}` DENTRO do HTML? Isso é o poder do JSX!
+
+**Bônus:** Vá no `layout.tsx` (na mesma pasta) e mude o `title` de `"Create Next App"` para `"Pomodoro App"` e o `description` para `"Meu gerenciador Pomodoro"`. É assim que trocamos o título da aba do navegador!

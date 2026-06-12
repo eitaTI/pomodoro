@@ -47,5 +47,4 @@ E no seu `app.service.ts`, adicione o novo método que salva no banco usando o P
     });
   }
 ```
-```
 A sua API agora é à prova de balas.

@@ -43,7 +43,9 @@ import { LoggerModule } from 'nestjs-pino'; // Importe no topo
       }
     })
   ],
-//...
+  controllers: [AppController],
+  providers: [AppService, PrismaService],
+})
 ```
 Rode o servidor (`npm run start:dev`) e faça uma requisição no navegador. Olha como o seu terminal fica colorido e super detalhado! 
 

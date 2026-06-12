@@ -32,5 +32,5 @@ Crie uma função para mandar esse aviso no seu `page.tsx`. Ela será chamada to
   }
 ```
 
-A chame quando o `tempo === 0` no seu `useEffect` do relógio!
+Chame-a quando o `tempo === 0` no seu `useEffect` do relógio!
 Você completou o ciclo completo de uma aplicação Web Corporativa. Da Interface até a Tabela do Banco de Dados.

@@ -9,7 +9,6 @@ Quando você faz isso, o Compose cria uma "Rede Wi-Fi Privada" entre os containe
 Abra o seu `docker-compose.yml` na pasta `backend/` e modifique para ficar assim:
 
 ```yaml
-version: '3.8'
 services:
   # Nosso Banco de Dados já conhecido
   db:

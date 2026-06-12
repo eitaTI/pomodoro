@@ -11,21 +11,21 @@ type TipoSessao = 'FOCO' | 'DESCANSO';
 
 interface Sessao {
     id: number;
-    minutos: number;
+    duracaoMinutos: number;
     tipo: TipoSessao;
 }
 
 const diaDeTrabalho: Sessao[] = [ // O [] diz que é uma LISTA de Sessões
-    { id: 1, minutos: 25, tipo: 'FOCO' },
-    { id: 2, minutos: 5, tipo: 'DESCANSO' },
-    { id: 3, minutos: 25, tipo: 'FOCO' }
+    { id: 1, duracaoMinutos: 25, tipo: 'FOCO' },
+    { id: 2, duracaoMinutos: 5, tipo: 'DESCANSO' },
+    { id: 3, duracaoMinutos: 25, tipo: 'FOCO' }
 ];
 
 // FILTER: Quero criar uma nova lista SÓ com as sessões de FOCO
 const sessoesDeFoco = diaDeTrabalho.filter((sessao) => sessao.tipo === 'FOCO');
 
 // MAP: Quero pegar as sessões de foco e pegar SÓ os minutos delas
-const apenasOsMinutos = sessoesDeFoco.map((sessao) => sessao.minutos);
+const apenasOsMinutos = sessoesDeFoco.map((sessao) => sessao.duracaoMinutos);
 
 // REDUCE: Quero somar todos esses minutos (começando de 0)
 const totalFoco = apenasOsMinutos.reduce((acumulador, minutos) => acumulador + minutos, 0);
