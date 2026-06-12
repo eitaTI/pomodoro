@@ -22,22 +22,32 @@ const simularSalvamentoNoBanco = (): Promise<void> => {
 }
 ```
 
-Agora, modifique o começo da função `tick()` lá na sua classe `Pomodoro`:
+Agora, substitua a função `tick()` inteira lá na sua classe `Pomodoro` pela versão abaixo. Note que ela agora é `async` e retorna `Promise<void>`:
 
 ```typescript
-    private async tick(): Promise<void> { // Note o 'async' aqui!
+    private async tick(): Promise<void> {
         if (this.minutos === 0 && this.segundos === 0) {
             this.pausar();
             console.log("\nPOMODORO FINALIZADO! 🚨");
             console.log("Salvando no banco...");
             
             // Aqui o código PARA e espera a Promise se resolver!
-            await simularSalvamentoNoBanco(); 
+            await simularSalvamentoNoBanco();
             
             console.log("Tudo pronto! Pode iniciar o próximo.");
             return;
         }
-//... resto do tick
+
+        if (this.segundos === 0) {
+            this.minutos--;
+            this.segundos = 59;
+        } else {
+            this.segundos--;
+        }
+
+        console.clear();
+        console.log(`⏱️ Tempo: ${this.getTempoFormatado()}`);
+    }
 ```
 
 Deixe o Pomodoro de 1 minuto acabar e repare no console! O aviso de salvamento demora 2 segundos, mas não trava o resto. Você acabou de dominar um dos maiores fantasmas do TypeScript: O assincronismo.

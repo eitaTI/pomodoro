@@ -7,7 +7,7 @@ O **Pino** é o gerador de logs mais rápido do ecossistema Node.js.
 
 ### 🎯 A Sua Missão
 Para integrar o Pino no NestJS, vamos instalar o módulo oficial:
-`npm i nestjs-pino pino-http`
+`npm i nestjs-pino pino-http pino-pretty`
 
 Abra o seu `main.ts` e adicione o Logger do Pino para capturar TODAS as requisições que chegam na sua API:
 

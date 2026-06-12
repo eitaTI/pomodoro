@@ -30,9 +30,22 @@ const CriarSessaoSchema = z.object({
       throw new BadRequestException(dadosSeguros.error.errors);
     }
 
-    // Se passou do segurança, a gente chama a cozinha (AppService)
-    // Crie a função salvarSessao no AppService usando o Prisma!
-    return { mensagem: 'Sessão salva de forma super segura!' };
+    // Passou do segurança! Chama a cozinha (AppService) com os dados validados
+    return this.appService.salvarSessao(dadosSeguros.data);
   }
+```
+
+E no seu `app.service.ts`, adicione o novo método que salva no banco usando o Prisma:
+
+```typescript
+  async salvarSessao(dados: { tipo: string; duracaoMinutos: number }) {
+    return this.prisma.pomodoroSession.create({
+      data: {
+        tipo: dados.tipo,
+        duracaoMinutos: dados.duracaoMinutos,
+      },
+    });
+  }
+```
 ```
 A sua API agora é à prova de balas.

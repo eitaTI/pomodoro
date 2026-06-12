@@ -43,4 +43,10 @@ Derrube o banco antigo se ele estiver rodando (`docker compose down`) e suba a f
 
 `docker compose up --build`
 
-Você vai ver o Docker baixando o Node, instalando suas coisas, compilando seu NestJS e subindo a API junto com o Postgres no mesmo terminal. **ISSO é produção de verdade.**
+Você vai ver o Docker baixando o Node, instalando suas coisas, compilando seu NestJS e subindo a API junto com o Postgres no mesmo terminal.
+
+> **Atenção:** Como o banco de dados foi recriado do zero, as tabelas ainda não existem. Deixe o terminal do Docker rodando, abra um NOVO terminal na pasta `backend/` e aplique as migrations no banco novo:
+>
+> `npx prisma migrate deploy`
+>
+> Depois disso, a API já consegue ler e escrever no banco! **ISSO é produção de verdade.**
