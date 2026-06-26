@@ -65,6 +65,9 @@ export default function Home() {
       {/* Embaixo do botão Iniciar Foco */}
   <div className="mt-12 text-center text-slate-400">
     <h3 className="text-xl font-bold text-white mb-4">Seu Histórico</h3>
+    {carregando ? (
+        <p className="animate-pulse text-rose-300">Carregando seus dados...</p>
+    ) : (
     <ul>
       {historico.map((sessao: any) => (
         <li key={sessao.id} className="mb-2">
@@ -73,6 +76,7 @@ export default function Home() {
         </li>
       ))}
     </ul>
+    )}
   </div>
       
     </main>
