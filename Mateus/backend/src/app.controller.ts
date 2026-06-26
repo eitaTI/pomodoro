@@ -13,6 +13,18 @@ const CriarSessaoSchema = z.object({
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get() // <-- Rota GET /pomodoro
+  index() {
+    return {
+      nome: 'Pomodoro API',
+      versao: '1.0',
+      rotas: {
+        historico: 'GET /pomodoro/historico',
+        salvar: 'POST /pomodoro/salvar'
+      }
+    };
+  }
+
   @Get('historico') // <-- Rota GET /pomodoro/historico
   buscarHistorico() {
     return this.appService.getHistorico();
@@ -20,16 +32,14 @@ export class AppController {
 
 @Post('salvar')
   async salvarSessao(@Body() body: any) {
-    // Tenta validar. Se der erro, ele expulsa a requisição.
     const dadosSeguros = CriarSessaoSchema.safeParse(body);
     
     if (!dadosSeguros.success) {
       throw new BadRequestException(dadosSeguros.error.issues);
     }
 
-    // Se passou do segurança, a gente chama a cozinha (AppService)
-    // Crie a função salvarSessao no AppService usando o Prisma!
-    return { mensagem: 'Sessão salva de forma super segura!' };
+    const sessao = await this.appService.salvarSessao(dadosSeguros.data);
+    return { mensagem: 'Sessão salva com sucesso!', sessao };
   }
 }
 

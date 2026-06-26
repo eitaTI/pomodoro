@@ -3,13 +3,20 @@ import { PrismaService } from './prisma.service';
 
 @Injectable()
 export class AppService {
-  // Injetando o banco aqui dentro!
   constructor(private prisma: PrismaService) {}
 
   async getHistorico() {
-    // Busca tudo que está no banco, ordenado pelo mais recente
     return this.prisma.pomodoroSession.findMany({
       orderBy: { createdAt: 'desc' }
+    });
+  }
+
+  async salvarSessao(dados: { tipo: string; duracaoMinutos: number }) {
+    return this.prisma.pomodoroSession.create({
+      data: {
+        tipo: dados.tipo,
+        duracaoMinutos: dados.duracaoMinutos
+      }
     });
   }
 }

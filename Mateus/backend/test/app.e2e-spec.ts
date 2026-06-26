@@ -16,11 +16,14 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('GET /pomodoro', () => {
     return request(app.getHttpServer())
-      .get('/')
+      .get('/pomodoro')
       .expect(200)
-      .expect('Hello World!');
+      .expect((res) => {
+        expect(res.body).toHaveProperty('nome', 'Pomodoro API');
+        expect(res.body).toHaveProperty('rotas');
+      });
   });
 
   afterEach(async () => {
