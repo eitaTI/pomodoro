@@ -11,9 +11,10 @@ export class AppService {
     });
   }
 
-  async salvarSessao(dados: { tipo: string; duracaoMinutos: number }) {
+  async salvarSessao(dados: { nome: string; tipo: string; duracaoMinutos: number }) {
     return this.prisma.pomodoroSession.create({
       data: {
+        nome: dados.nome,
         tipo: dados.tipo,
         duracaoMinutos: dados.duracaoMinutos
       }

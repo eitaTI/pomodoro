@@ -4,8 +4,9 @@ import { Body, Post, BadRequestException } from '@nestjs/common';
 import { z } from 'zod';
 
 const CriarSessaoSchema = z.object({
-  tipo: z.enum(['FOCO', 'DESCANSO']), // Só aceita esses dois nomes exatos
-  duracaoMinutos: z.number().positive().max(60) // Número positivo e no máximo 60 min
+  nome: z.string().min(1, 'Nome é obrigatório'),
+  tipo: z.enum(['FOCO', 'DESCANSO']),
+  duracaoMinutos: z.number().positive().max(60)
 });
 
 

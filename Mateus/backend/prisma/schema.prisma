@@ -14,7 +14,8 @@ datasource db {
 }
 model PomodoroSession {
   id             Int      @id @default(autoincrement())
+  nome           String   @default("") // Nome definido pelo usuário (ex: "Estudar React")
   tipo           String   // 'FOCO' ou 'DESCANSO'
   duracaoMinutos Int
-  createdAt      DateTime @default(now()) // Marca a hora que você salvou sozinho!
+  createdAt      DateTime @default(now())
 }
