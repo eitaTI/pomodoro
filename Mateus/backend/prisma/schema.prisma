@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+model PomodoroSession {
+  id             Int      @id @default(autoincrement())
+  nome           String   @default("") // Nome definido pelo usuário (ex: "Estudar React")
+  tipo           String   // 'FOCO' ou 'DESCANSO'
+  duracaoMinutos Int
+  createdAt      DateTime @default(now())
+}
